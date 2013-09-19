@@ -7,7 +7,7 @@
 # Copyright 2012-2013, Phil Cohen
 #
 
-default["postgresql"]["version"]                         = "9.2"
+default["postgresql"]["version"]                         = "9.3"
 default["postgresql"]["apt_distribution"]                = node["lsb"]["codename"]
 
 default["postgresql"]["environment_variables"]           = {}
@@ -45,6 +45,7 @@ default["postgresql"]["port"]                            = 5432
 default["postgresql"]["max_connections"]                 = 100
 default["postgresql"]["superuser_reserved_connections"]  = 3
 default["postgresql"]["unix_socket_directory"]           = "/var/run/postgresql"
+default["postgresql"]["unix_socket_directories"]         = ["/var/run/postgresql"]
 default["postgresql"]["unix_socket_group"]               = ""
 default["postgresql"]["unix_socket_permissions"]         = "0777"
 default["postgresql"]["bonjour"]                         = "off"

@@ -5,6 +5,12 @@
 # -----------------------------
 #
 
-<% node['postgresql']['conf'].each_pair do |key, value| %>
+<% @configuration.each_pair do |key, value| %>
+<% if key == 'unix_socket_directory' -%>
+<%= "#{key} = '#{value}'" if node['postgresql']['version'].to_f < 9.3 %>
+<% elsif key == 'unix_socket_directories' %>
+<%= "#{key} = '#{value.join(' ')}'" if node['postgresql']['version'].to_f > 9.2 %>
+<% else -%>
 <%= "#{key} = '#{value}'" %>
+<% end -%>
 <% end %>
